@@ -1,0 +1,40 @@
+# Microk8s:-
+
+MicroK8s is the easiest and fastest way to get Kubernetes up and running.MicroK8s is the go-to platform for mission-critical workloads. Quickly spin nodes up in your CI/CD and reduce your production maintenance costs
+
+MicroK8s architecture and OS compatibility allow you to deploy on COTS hardware and develop on any workstation.
+
+# Reference link:-
+
+https://ubuntu.com/tutorials/install-a-local-kubernetes-with-microk8s#1-overview
+
+# Setup Microk8s :
+
+# Install a local Kubernetes with MicroK8s :
+# Deploying MicroK8s:
+```
+sudo snap install microk8s --classic
+```
+NOTE: You may need to configure your firewall to allow pod-to-pod and pod-to-internet communication:
+```
+sudo ufw allow in on cni0 && sudo ufw allow out on cni0
+sudo ufw default allow routed
+```
+Enable addons:
+```
+microk8s enable dns 
+microk8s enable dashboard
+microk8s enable storage
+```
+NOTE : These addons can be disabled at anytime by running the microk8s disable,
+With microk8s status you can see the list of available addons and the ones currently enabled.
+# Accessing the Kubernetes dashboard:
+NOTE: Now that we have enabled the dns and dashboard addons we can access the available dashboard. To do so we first check the deployment progress of our addons with microk8s kubectl get all --all-namespaces
+
+#Kubernetes dashboard :
+NOTE : EX :- As we see above the kubernetes-dashboard service in the kube-system namespace has a ClusterIP of 10.152.183.64and listens on TCP port 443. The ClusterIP is randomly assigned, so if you follow these steps on your host, make sure you check the IP adress you got. Point your browser to https://10.152.183.64:443 and you will see the kubernetes dashboard UI.
+```
+token=$(microk8s kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
+microk8s kubectl -n kube-system describe secret $token
+```
+Here ,the Microk8s is successfully deployed.

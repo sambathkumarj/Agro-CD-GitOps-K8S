@@ -10,22 +10,22 @@ Application definitions, configurations, and environments should be declarative 
 
 Let's assume you're familiar with core Git, Docker, Kubernetes, Continuous Delivery, and GitOps concepts. Below are some of the concepts that are specific to Argo CD.
       
-    • Application A group of Kubernetes resources as defined by a manifest. This is a Custom Resource Definition (CRD).
+• Application A group of Kubernetes resources as defined by a manifest. This is a Custom Resource Definition (CRD).
       
-    • Application source type Which Tool is used to build the application.
+• Application source type Which Tool is used to build the application.
       
-    • Target state The desired state of an application, as represented by files in a Git repository. 
+• Target state The desired state of an application, as represented by files in a Git repository. 
       
-    • Live state The live state of that application. What pods etc are deployed.
+• Live state The live state of that application. What pods etc are deployed.
 
 
 # Requirements
 
-    • Installed kubectlcommand-line tool.
+• Installed kubectlcommand-line tool.
       
-    • Have a kubeconfig file (default location is ~/.kube/config).
+• Have a kubeconfig file (default location is ~/.kube/config).
       
-    • CoreDNS. Can be enabled for microk8s by microk8s enable dns && microk8s stop && microk8s start
+• CoreDNS. Can be enabled for microk8s by microk8s enable dns && microk8s stop && microk8s start
 
 # 1. Install Argo CD
 
